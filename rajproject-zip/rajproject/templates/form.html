@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Account Application</title>
+</head>
+<body>
+
+<h2>Bank Account Application Form</h2>
+
+<form action="submit_form.php" method="post">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="dob">DOB:</label>
+    <input type="date" id="dob" name="dob"><br><br>
+
+    <label for="age">Age:</label>
+    <input type="text" id="age" name="age"><br><br>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone"><br><br>
+
+    <label for="email">Mail ID:</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address"></textarea><br><br>
+
+    <label for="district">District:</label>
+    <select id="district" name="district">
+        <option value="ernakulam">Ernakulam</option>
+      <option value="tsr">tsr</option>
+      <option value="calicut">calicut</option>
+        <!-- Add more district options here -->
+    </select><br><br>
+
+    <label for="branch">Branch:</label>
+    <select id="branch" name="branch">
+        <option value="aluva">Aluva</option>
+        <option value="edapally">Edapally</option>
+      <option value="kolazhy">kolazhy</option>
+        <option value="mulamkunnthkaav">mulamkunnthkaav</option>
+      <option value="koyilandy">koyilandy</option>
+        <option value="vadakkara">vadakkara</option>
+        <!-- Add more branch options based on selected district -->
+    </select><br><br>
+
+    <label for="accountType">Account Type:</label>
+    <select id="accountType" name="accountType">
+        <option value="savings">Savings Account</option>
+        <option value="current">Current Account</option>
+        <!-- Add more account type options here -->
+    </select><br><br>
+
+    <label>Materials Provide:</label><br>
+    <input type="checkbox" id="debitCard" name="materials[]" value="debitCard">
+    <label for="debitCard">Debit Card</label><br>
+    <input type="checkbox" id="creditCard" name="materials[]" value="creditCard">
+    <label for="creditCard">Credit Card</label><br>
+    <input type="checkbox" id="chequeBook" name="materials[]" value="chequeBook">
+    <label for="chequeBook">Cheque Book</label><br>
+    <!-- Add more materials options here -->
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

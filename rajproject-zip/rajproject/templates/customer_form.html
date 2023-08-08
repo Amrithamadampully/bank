@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <style>
+        .register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+    </style>
+<head>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+    <script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        //create arrays to store option and values
+        var Ernakulam = [
+            {display: "Kacherippady", value: "Kacherippady" },
+            {display: "Muvattupuzha", value: "Muvattupuzha" },
+
+        ];
+
+        var Thrissur = [
+            {display: "Mulamkkunnthkaav", value: "Mulamkkunnthkaav" },
+            {display: "Kolazhy", value: "Kolazhy" },
+
+        ];
+        var Palakkad = [
+            {display: "Ottapalam", value: "Ottapalam" },
+            {display: "Aalthur", value: "Aalthur" },
+
+        ];
+        var Trivandrum = [
+            {display: "Kilimanoor", value: "Kilimanoor" },
+            {display: "Kaarivattom", value: "Kaarivattom" },
+
+        ];
+        var Calicut = [
+            {display: "Koyilandi", value: "Koyilandi" },
+            {display: "Vadakara", value: "Vadakara" },
+
+        ];
+
+        //If parent option is changed
+        $("#parent_selection").change(function() {
+            var parent = $(this).val(); //get option value from parent
+            switch(parent){ //using switch compare selected option and populate child
+                case 'Ernakulam':
+                    $('#child_selection').attr('disabled', false);
+                    list(Ernakulam);
+                    break;
+                    case 'Palakkad':
+                    $('#child_selection').attr('disabled', false);
+                    list(Palakkad);
+                    break;
+                    case 'Trivandrum':
+                    $('#child_selection').attr('disabled', false);
+                    list(Trivandrum);
+                    break;
+                    case 'Calicut':
+                    $('#child_selection').attr('disabled', false);
+                    list(Calicut);
+                    break;
+                case 'Thrissur':
+                    $('#child_selection').attr('disabled', false);
+                    list(Thrissur);
+                    break;
+                default: //default child option is blank
+                    $("#child_selection").html('');
+                    $('#child_selection').attr("disabled", true);
+                    break;
+            }
+        });
+
+        //function to populate child select box
+        function list(array_list) {
+            $("#child_selection").html(""); //reset child options
+            $(array_list).each(function (i) { //populate child options
+                $("#child_selection").append("<option value='" + array_list[i].value + "'>" + array_list[i].display + "</option>");
+            });
+        }
+    });
+    function showConfirmation() {
+            var confirmationMessage = "Application accepted!";
+            alert(confirmationMessage);
+            }
+    </script>
+<title>Form PAGE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+</head>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+
+
+<div class="container register">
+<div class="row">
+                    <div class="col-md-3 register-left" ><br><br><br><br><br><br>
+                        <!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/><br><br><br><br><br> -->
+                        <h3>Welcome to Our Website!</h3>
+                        </div>
+                    <div class="col-md-9 register-right">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">FORM PAGE</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6 form-group">
+
+                                          <form method="POST" class="post-form" enctype="multipart/form-data">
+                                               {% csrf_token %}
+                                              <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Username" name="Username">
+                                        </div>
+                                              <div class="form-group">
+                                            <input type="date" class="form-control" placeholder="dob" name="dob">
+                                        </div>
+                                              <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="age" name="age">
+                                        </div>
+                                            <div class="form-group text-light">
+                                                gender
+                                                <select class="custom-select tm-select-accounts text-dark"  name="gender">
+                                                  <option selected="">Select</option>
+                                                  <option value="Female">Female</option>
+                                                  <option value="Male">Male</option>
+                                                  <option value="Other">Other</option>
+                                                </select>
+                                    </div>
+                                            <div class="form-group">
+                                            <input type="phone" class="form-control" placeholder="phone" name="phone">
+                                        </div>
+                                            <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="email" name="email">
+                                        </div>
+                                            <div class="form-group">
+                                              <textarea rows="4" cols="50" name="Address" placeholder="enter your address"></textarea>
+                                            </div>
+
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <br><br><br><br>
+                                    <div class="col-md-6">
+                                       <div class="form-group text-light">
+                                                <label for="accounts">accounts</label>
+                                                <select class="custom-select tm-select-accounts text-dark"  name="account">
+                                                  <option selected="">Accounts Type</option>
+                                                  <option value="Savings Account">Savings Account</option>
+                                                  <option value="Current Account">Current Account</option>
+                                                </select>
+                                    </div>
+                                      <div class="form-group">
+                                          <label>Materials Provide:</label><br>
+    <input type="checkbox" id="debitCard" name="material" value="debitCard">
+    <label for="debitCard">Debit Card</label><br>
+    <input type="checkbox" id="creditCard" name="material" value="creditCard">
+    <label for="creditCard">Credit Card</label><br>
+    <input type="checkbox" id="chequeBook" name="material" value="chequeBook">
+    <label for="chequeBook">Cheque Book</label><br>
+                                      </div>
+                                      <div class="wrapper">Branches:
+                <select name="parent_selection" id="parent_selection">
+                    <option value="">-- Select Branches --</option>
+                    <option value="Ernakulam">Ernakulam</option>
+                    <option value="Thrissur">Thrissur</option>
+                    <option value="Palakkad">Palakkad</option>
+                    <option value="Trivandrum">Trivandrum</option>
+                    <option value="Calicut">Calicut</option>
+                </select>
+                <select name="child_selection" id="child_selection" disabled="disabled"/>
+
+<br>
+                                        <input type="submit" class="btnRegister"  value="Submit" onclick="showConfirmation()">
+                                         <a href="logout"  type="submit" class="btnRegister"  ><center>Logout</center></a>
+                                    </div>
+                                </div>
+                            </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </body>
+        </html>
